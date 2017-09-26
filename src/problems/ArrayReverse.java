@@ -19,6 +19,7 @@ public class ArrayReverse {
 		int N = sc.nextInt();
 		int[] arr = new int[N];
 		int i=0;
+		
 		for(;i<N;i++){
 			arr[i] = sc.nextInt();
 		}
