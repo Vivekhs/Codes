@@ -3,6 +3,8 @@
  */
 package problems;
 import java.util.Scanner;
+
+
 /**
  * @author Vivek Sinha
  *
