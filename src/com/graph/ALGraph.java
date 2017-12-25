@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Random;
+import java.util.Stack;
 
 /**
  * @author vivekrjt
@@ -81,6 +82,40 @@ public class ALGraph {
 			
 		}
 		
+		public void DFSTraversal(int startNode) {
+			Stack<Integer> nodeStack = new Stack<Integer>();
+			boolean[] trackVisited = new boolean[nodes];
+			System.out.print("Start ");
+			printDFS(trackVisited, nodeStack, startNode);
+			
+			
+		}
+		
+		private void printDFS(boolean[] trackVisited, Stack<Integer> nodeStack, Integer node) {
+			if(!trackVisited[node]) {
+				System.out.print(" => "+node);
+				nodeStack.push(node);
+				trackVisited[node] = true;
+			}
+			
+			
+			for(Integer tempNode : nodesList[node]) {
+				if(!trackVisited[tempNode]) {
+					printDFS(trackVisited, nodeStack, tempNode);
+					return;
+				}
+			}
+			if(nodeStack.empty()) {
+				return;
+			}
+			Integer tempNode = nodeStack.pop();
+			
+			if(tempNode != null) {
+				printDFS(trackVisited, nodeStack, tempNode);
+			}
+			
+		}
+		
 	}
 
 	/**
@@ -95,9 +130,9 @@ public class ALGraph {
 			
 		}
 		
-		graph.addEdge(0, 0);
-		graph.addEdge(1, 1);
-		graph.addEdge(1, 1);
+//		graph.addEdge(0, 0);
+//		graph.addEdge(1, 1);
+//		graph.addEdge(1, 1);
 //		graph.addEdge(1, 2);
 //		graph.addEdge(2, 3);
 //		graph.addEdge(3, 4);
@@ -105,6 +140,8 @@ public class ALGraph {
 		
 		
 		graph.BSTTraversal(random.nextInt(5));
+		System.out.println("");
+		graph.DFSTraversal(random.nextInt(5));
 
 	}
 
