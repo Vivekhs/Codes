@@ -1,4 +1,4 @@
-package problems;
+package com.problems;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,6 +38,15 @@ public class MagicalWord {
 	return false;
 	 
  }
-
+ 
+ /**
+  *  I have to rewrite this function
+  * @param arr
+  * @param i
+  * @return
+  */
+private static int getClosestIndex(Object[] arr, int i) {
+	return 1;
+}
  
 }

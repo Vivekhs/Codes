@@ -1,7 +1,7 @@
 /**
  * 
  */
-package problems;
+package com.problems;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
