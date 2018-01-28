@@ -1,7 +1,7 @@
 /**
  * 
  */
-package sorting;
+package com.sorting;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -32,6 +32,7 @@ public class BubbleSort {
 		array = bubbleSort(array, size);
 
 		System.out.println(Arrays.toString(array));
+		sc.close();
 
 	}
 
@@ -39,13 +40,10 @@ public class BubbleSort {
 		
 		for (int i = 0; i < size - 1; i++) {
 			for (int j = 0; j < size - 1 - i; j++) {
-				
 				if (array[j] > array[j + 1]) {
-					
 					array[j] = array[j] + array[j + 1];
 					array[j + 1] = array[j] - array[j + 1];
 					array[j] = array[j] - array[j + 1];
-
 				}
 			}
 		}
