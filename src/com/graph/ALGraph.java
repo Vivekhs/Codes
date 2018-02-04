@@ -4,11 +4,7 @@
 package com.graph;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.LinkedHashSet;
 import java.util.Queue;
 import java.util.Random;
 import java.util.Stack;
@@ -21,27 +17,18 @@ public class ALGraph {
 	
 	private class Graph{
 		int nodes;
-		LinkedList<Integer>[] nodesList;
-		Map<String, Integer> nodesMap;
+		LinkedHashSet<Integer>[] nodesList;
 		public Graph(int nodes) {
 			this.nodes = nodes;
-			nodesMap = new HashMap<String, Integer>();
-			nodesList = new LinkedList[nodes]; 
+			nodesList = new LinkedHashSet[nodes]; 
 			for(int i=0;i<nodes;i++) {
-				nodesList[i] = new LinkedList<Integer>();
+				nodesList[i] = new LinkedHashSet<Integer>();
 			}
 		}
 		public void addEdge(int from, int to) {
 			
-			if(!(nodesMap.get(from+to+"") !=null || nodesMap.get(to+from+"") != null )) {
-				
-				// if u don't want self loop, add from != to 
-				// nodeList[from].addList(to) also.
-				nodesList[from].addFirst(to);
 				if(from!=to)
-				nodesList[to].addFirst(from);
-				nodesMap.put(from+to+"", to);
-			}
+				nodesList[from].add(to);
 		}
 		
 		public void display() {
@@ -123,10 +110,10 @@ public class ALGraph {
 	 */
 	public static void main(String[] args) {
 		ALGraph alGraph = new ALGraph();
-		ALGraph.Graph graph = alGraph.new Graph(5);
+		ALGraph.Graph graph = alGraph.new Graph(10);
 		Random random = new Random();
-		for(int i=0 ;i <10;i++) {
-			graph.addEdge(random.nextInt(5), random.nextInt(5));
+		for(int i=0 ;i <50;i++) {
+			graph.addEdge(random.nextInt(10), random.nextInt(10));
 			
 		}
 		
