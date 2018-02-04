@@ -81,13 +81,14 @@ public class ALGraph {
 		private void printDFS(boolean[] trackVisited, Stack<Integer> nodeStack, Integer node) {
 			if(!trackVisited[node]) {
 				System.out.print(" => "+node);
-				nodeStack.push(node);
+				
 				trackVisited[node] = true;
 			}
 			
 			
 			for(Integer tempNode : nodesList[node]) {
 				if(!trackVisited[tempNode]) {
+					nodeStack.push(node);
 					printDFS(trackVisited, nodeStack, tempNode);
 					return;
 				}
@@ -102,33 +103,58 @@ public class ALGraph {
 			}
 			
 		}
+		public void topologicalSort(int nodeIndex, Stack<Integer> tracker, Stack<Integer> dfsTracker, boolean[] visited) {
+			
+			visited[nodeIndex] = true;
+			
+			
+			for(Integer node: nodesList[nodeIndex]) {
+					if(!visited[node]) {
+						dfsTracker.push(nodeIndex);
+						topologicalSort(node, tracker, dfsTracker, visited);
+						return;
+					}
+			}
+			tracker.push(nodeIndex);
+			if(!dfsTracker.isEmpty())
+			topologicalSort(dfsTracker.pop(), tracker, dfsTracker, visited);
+		}
 		
 	}
+	
+	
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		ALGraph alGraph = new ALGraph();
-		ALGraph.Graph graph = alGraph.new Graph(10);
-		Random random = new Random();
-		for(int i=0 ;i <50;i++) {
-			graph.addEdge(random.nextInt(10), random.nextInt(10));
-			
-		}
+		ALGraph.Graph graph = alGraph.new Graph(7);
+//		Random random = new Random();
+//		for(int i=0 ;i <50;i++) {
+//			graph.addEdge(random.nextInt(10), random.nextInt(10));
+//			
+//		}
 		
-//		graph.addEdge(0, 0);
-//		graph.addEdge(1, 1);
-//		graph.addEdge(1, 1);
-//		graph.addEdge(1, 2);
-//		graph.addEdge(2, 3);
-//		graph.addEdge(3, 4);
+		graph.addEdge(0, 1);
+		graph.addEdge(0, 2);
+		graph.addEdge(0, 6);
+		graph.addEdge(1, 3);
+		graph.addEdge(2, 3);
+		graph.addEdge(3, 4);
+		graph.addEdge(4, 5);
 		graph.display();
-		
-		
-		graph.BSTTraversal(random.nextInt(5));
+		Stack<Integer> tracker = new Stack<Integer>();
+		Stack<Integer> dfsTracker = new Stack<Integer>();
+		graph.topologicalSort(0, tracker, dfsTracker, new boolean[7]);
+		while(!tracker.isEmpty()) {
+			System.out.println(tracker.pop());
+		}
+		//graph.BSTTraversal(random.nextInt(5));
+		graph.BSTTraversal(0);
 		System.out.println("");
-		graph.DFSTraversal(random.nextInt(5));
+		//graph.DFSTraversal(random.nextInt(5));
+		graph.DFSTraversal(0);
 
 	}
 
