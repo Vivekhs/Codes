@@ -18,7 +18,7 @@ public class DemoRegex {
 	public static void main(String[] args) {
 		
 		Pattern pattern = Pattern.compile("^[A-Z][^ON]*$");
-		Matcher matcher = pattern.matcher("HEAVEN");
+		Matcher matcher = pattern.matcher("HEAVE");
 		
 		if(matcher.find()) {
 			System.out.println("Matched");
