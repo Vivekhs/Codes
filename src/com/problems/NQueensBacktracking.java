@@ -46,7 +46,6 @@ public class NQueensBacktracking {
 					board[i][j] = 1;
 					
 					if(nQueens(board, N-1)){
-						
 						return true;
 					}
 					board[i][j] = 0;
@@ -75,7 +74,7 @@ public class NQueensBacktracking {
 //				if(board[p][q] ==1 && Math.abs(i-p) == Math.abs(j-q)){
 //					return true;
 //				}
-				if(board[p][q] ==1 && ( (p+q == i+j) || (p-q == i-j))){
+				if(board[p][q] ==1 && ( ( p+q == i+j) || (p-q == i-j))){
 					return true;
 				}
 			}
