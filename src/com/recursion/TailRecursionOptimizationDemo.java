@@ -14,14 +14,14 @@ public class TailRecursionOptimizationDemo {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(fact(5));
-
+fact(1500);
 	}
 
-	static int fact(int factResult) {
+	static void fact(int factResult) {
 		if(factResult<2) {
-			return factResult;
+			return;
 		}
-		return factResult*fact(factResult-1);
+		
+		fact(factResult-1);
 	}
 }
