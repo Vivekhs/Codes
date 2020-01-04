@@ -11,25 +11,42 @@ public class BSTDemo {
 		Scanner sc = new Scanner(System.in);
 		Random  random = new Random();
 		BinarySearchTree bst =new BinarySearchTree();
-		int N = sc.nextInt();
-		for(int i = 0; i< N;i++){
-			int number = random.nextInt(100);
-			System.out.println(number);
-			bst.add(number+1);
+		int N ;
+		int[] arr = {
+				70,
+				54,
+				36,
+				61,
+				98,
+				99,
+				100
+		};
+		for(int i = 0; i< 7;i++){
+			int number = random.nextInt(100)+1;
+			//System.out.println(number);
+			bst.add(arr[i]);
 		}
+		
 		bst.display(bst.getRoot());
-		List<Node> sortedElems = new ArrayList<Node>(); 
-		bst.inorderTraversal(bst.getRoot(), sortedElems);
-		System.out.println("Inorder Traversal: ");
-		for(Node node : sortedElems) {
-			System.out.println(node.data);
-		}
-		bst.preorderTraversal(bst.getRoot(), sortedElems);
-		System.out.println("Pre-Order Traversal: ");
-		for(Node node : sortedElems) {
-			System.out.println(node.data);
-		}
+//		List<Node> sortedElems = new ArrayList<Node>(); 
+//		bst.inorderTraversal(bst.getRoot(), sortedElems);
+//		System.out.println("Inorder Traversal: ");
+//		for(Node node : sortedElems) {
+//			System.out.println(node.data);
+//		}
+//		bst.preorderTraversal(bst.getRoot(), sortedElems);
+//		System.out.println("Pre-Order Traversal: ");
+//		for(Node node : sortedElems) {
+//			System.out.println(node.data);
+//		}
+//		System.out.println("Level order traversal");
+//		bst.levelOrderTraversal(bst.getRoot());
+//		System.out.println("Top View : ");
+//		bst.topView(bst.getRoot());
+//		System.out.println("Left view: ");
+//		bst.leftView(bst.getRoot());
 		sc.close();
 	}
 
+	
 }
